@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Footer } from './components/Footer.jsx'
 import { Header } from './components/Header.jsx'
 import { LoadingOverlay } from './components/LoadingOverlay.jsx'
+import { ScrollToTop } from './components/ScrollToTop.jsx'
 import { ToastViewport } from './components/ToastViewport.jsx'
 import { AppDetailsPage } from './pages/AppDetailsPage.jsx'
 import { AppsPage } from './pages/AppsPage.jsx'
@@ -15,8 +16,12 @@ function App() {
 
   return (
     <div className="app-shell">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+      <ScrollToTop />
       <Header />
-      <main className="page-shell">
+      <main className="page-shell" id="main-content">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/apps" element={<AppsPage />} />

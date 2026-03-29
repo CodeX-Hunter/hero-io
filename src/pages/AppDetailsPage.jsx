@@ -72,6 +72,11 @@ export function AppDetailsPage() {
           <button
             className="button button-install"
             disabled={isInstalled}
+            aria-label={
+              isInstalled
+                ? `${app.title} already installed`
+                : `Install ${app.title}`
+            }
             onClick={() => installApp(app)}
           >
             {isInstalled ? 'Installed' : `Install Now [${app.size} MB]`}

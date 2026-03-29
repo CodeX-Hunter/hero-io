@@ -53,6 +53,7 @@ export function InstallationPage() {
         <div className="toolbar-controls">
           <select
             className="sort-select"
+            aria-label="Sort installed apps by downloads"
             value={sortOrder}
             onChange={(event) => setSortOrder(event.target.value)}
           >
@@ -80,6 +81,7 @@ export function InstallationPage() {
 
             <button
               className="button button-danger"
+              aria-label={`Uninstall ${app.title}`}
               onClick={() => uninstallApp(app.id)}
             >
               Uninstall

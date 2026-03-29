@@ -68,11 +68,13 @@ export function AppsPage() {
             className="search-input"
             type="search"
             placeholder="search apps"
+            aria-label="Search apps by title"
             value={searchTerm}
             onChange={handleSearchChange}
           />
           <select
             className="sort-select"
+            aria-label="Sort apps by downloads"
             value={sortOrder}
             onChange={(event) => setSortOrder(event.target.value)}
           >
