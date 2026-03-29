@@ -25,6 +25,11 @@ export function InstallationPage() {
     () => sortApps(installedApps, sortOrder),
     [installedApps, sortOrder],
   )
+  const totalStorage = installedApps.reduce((sum, app) => sum + app.size, 0)
+  const combinedDownloads = installedApps.reduce(
+    (sum, app) => sum + app.downloads,
+    0,
+  )
 
   if (!installedApps.length) {
     return (
@@ -43,6 +48,21 @@ export function InstallationPage() {
       <div className="section-heading">
         <h1>Your Installed Apps</h1>
         <p>Explore all trending apps on the market developed by us.</p>
+      </div>
+
+      <div className="install-summary-grid">
+        <article className="install-summary-card">
+          <span>Installed Apps</span>
+          <strong>{installedApps.length}</strong>
+        </article>
+        <article className="install-summary-card">
+          <span>Total Size</span>
+          <strong>{totalStorage} MB</strong>
+        </article>
+        <article className="install-summary-card">
+          <span>Combined Downloads</span>
+          <strong>{formatCompactNumber(combinedDownloads)}</strong>
+        </article>
       </div>
 
       <div className="toolbar">

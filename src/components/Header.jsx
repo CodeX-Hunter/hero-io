@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { useInstallations } from '../state/InstallationsContext.jsx'
 import { usePageLoader } from '../state/PageLoaderContext.jsx'
 
 const navItems = [
@@ -9,6 +10,7 @@ const navItems = [
 
 export function Header() {
   const { showPageLoader } = usePageLoader()
+  const { installedIds } = useInstallations()
 
   return (
     <header className="site-header">
@@ -29,7 +31,10 @@ export function Header() {
               }
               end={item.to === '/'}
             >
-              {item.label}
+              <span>{item.label}</span>
+              {item.to === '/installation' && installedIds.length ? (
+                <span className="nav-pill">{installedIds.length}</span>
+              ) : null}
             </NavLink>
           ))}
         </nav>
