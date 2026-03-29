@@ -436,6 +436,16 @@ select {
   gap: 12px;
 }
 
+.toolbar-result strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.toolbar-note {
+  margin: 0;
+  color: var(--muted);
+}
+
 .search-input,
 .sort-select {
   min-height: 48px;
@@ -448,6 +458,10 @@ select {
 
 .search-input {
   min-width: min(320px, 100%);
+}
+
+.clear-button {
+  border: 1px solid var(--border);
 }
 
 .details-hero {

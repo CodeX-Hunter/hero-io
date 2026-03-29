@@ -51,6 +51,14 @@ export function AppsPage() {
     }, 300)
   }
 
+  function clearSearch() {
+    window.clearTimeout(searchTimeoutRef.current)
+    setSearchTerm('')
+    setIsSearching(false)
+  }
+
+  const hasActiveSearch = searchTerm.trim().length > 0
+
   return (
     <section className="container apps-page">
       <div className="section-heading">
@@ -60,7 +68,12 @@ export function AppsPage() {
 
       <div className="toolbar">
         <div className="toolbar-result">
-          <strong>({filteredApps.length}) Apps Found</strong>
+          <strong>({apps.length}) Apps Available</strong>
+          <p className="toolbar-note">
+            {hasActiveSearch
+              ? `Showing ${filteredApps.length} matching result${filteredApps.length === 1 ? '' : 's'}`
+              : 'Browse the full Hero.IO collection'}
+          </p>
         </div>
 
         <div className="toolbar-controls">
@@ -82,6 +95,15 @@ export function AppsPage() {
             <option value="downloads-desc">High-Low</option>
             <option value="downloads-asc">Low-High</option>
           </select>
+          {hasActiveSearch ? (
+            <button
+              className="button button-secondary clear-button"
+              onClick={clearSearch}
+              type="button"
+            >
+              Clear Search
+            </button>
+          ) : null}
         </div>
       </div>
 
